@@ -1,0 +1,2671 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"> <!-- data-theme from Code 1, default dark -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya + Siddhi | Our Anniversary Story</title> <!-- Combined Title -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- Combined CSS Variables --- */
+        :root {
+            /* Color Scheme - Light Mode Defaults */
+            --bg-color-light: #fdfdfd;
+            --text-primary-light: #222222;
+            --text-secondary-light: #555555;
+            --heading-color-light: #4a4a4a;
+            --accent-1-light: #e6c0c8;
+            --accent-2-light: #b0a4b4;
+            --card-bg-light: #ffffff;
+            --border-light: #e0e0e0;
+            --card-shadow-light: rgba(92, 82, 94, 0.1);
+
+            /* Color Scheme - Dark Mode Defaults */
+            --bg-color-dark: #1a1a1d;
+            --text-primary-dark: #e8e8e8;
+            --text-secondary-dark: #a0a0a0;
+            --heading-color-dark: #d8bfd8;
+            --accent-1-dark: #d19ca5;
+            --accent-2-dark: #8a818d;
+            --card-bg-dark: #2a2a2e;
+            --border-dark: #3a3a3e;
+            --card-shadow-dark: rgba(0, 0, 0, 0.3);
+
+            --rose-color-light: #ff7a90;
+            --rose-color-dark: #f58faa;
+
+            --font-body: 'Lato', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+            --font-script: 'Pacifico', cursive;
+
+            --transition-speed: 0.4s;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-card: cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 8px;
+            --spacing-unit: 1rem;
+        }
+
+        html[data-theme='light'] {
+            --bg-color: var(--bg-color-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --heading-color: var(--heading-color-light);
+            --accent-1: var(--accent-1-light);
+            --accent-2: var(--accent-2-light);
+            --card-bg: var(--card-bg-light);
+            --border-color: var(--border-light);
+            --card-shadow: var(--card-shadow-light);
+            --rose-color: var(--rose-color-light);
+            color-scheme: light;
+        }
+
+        html[data-theme='dark'] {
+            --bg-color: var(--bg-color-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --heading-color: var(--heading-color-dark);
+            --accent-1: var(--accent-1-dark);
+            --accent-2: var(--accent-2-dark);
+            --card-bg: var(--card-bg-dark);
+            --border-color: var(--border-dark);
+            --card-shadow: var(--card-shadow-dark);
+            --rose-color: var(--rose-color-dark);
+            color-scheme: dark;
+        }
+
+        body.handwritten-mode {
+            font-family: var(--font-script);
+            line-height: 1.9;
+        }
+
+        body.handwritten-mode h1,
+        body.handwritten-mode h2,
+        body.handwritten-mode h3,
+        body.handwritten-mode .button-style,
+        body.handwritten-mode .control-button,
+        body.handwritten-mode nav.main-nav a {
+            font-family: var(--font-script);
+            font-weight: 400;
+        }
+
+        body.handwritten-mode #countdown-timer span {
+            font-weight: 400;
+        }
+
+        body.handwritten-mode .polaroid p {
+            font-family: var(--font-script);
+        }
+
+        body.handwritten-mode .letter-text {
+            font-family: var(--font-script) !important;
+        }
+
+        body.handwritten-mode .letter-signature {
+            font-family: var(--font-script) !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, font-family 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+        }
+
+        /* --- Intro Overlay Styles --- */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 20000;
+            /* Highest z-index */
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+            /* Ease for zoom out */
+        }
+
+        #intro-heart {
+            font-size: 5rem;
+            /* Adjust size as needed */
+            color: var(--accent-1);
+            cursor: pointer;
+            animation: pulseHeart 2s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        #intro-heart:hover {
+            transform: scale(1.1);
+        }
+
+        #intro-heart:active {
+            transform: scale(0.9);
+        }
+
+        @keyframes pulseHeart {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* State for when intro is zooming out */
+        #intro-overlay.zoom-out {
+            transform: scale(30);
+            /* Make it feel like zooming out from the heart's perspective */
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Main content wrapper initial state */
+        #main-content-wrapper {
+            opacity: 0;
+            pointer-events: none;
+            /* Prevent interaction while hidden */
+            transition: opacity 1s ease-in 0.5s;
+            /* Fade in after overlay starts disappearing */
+        }
+
+        #main-content-wrapper.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #intro-overlay.zoom-out {
+                transform: scale(1);
+                /* No zoom, just fade */
+            }
+
+            #intro-heart {
+                animation: none;
+                /* No pulse */
+            }
+
+            #intro-heart:hover,
+            #intro-heart:active {
+                transform: scale(1);
+                /* No scale feedback on hover/active */
+            }
+        }
+
+
+        /* --- Container --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 clamp(15px, 5%, 50px);
+        }
+
+        section {
+            padding: calc(var(--spacing-unit) * 5) 0;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+            transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease, opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            color: var(--heading-color);
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+            font-weight: 700;
+            line-height: 1.3;
+            transition: color var(--transition-speed) ease, font-family 0.3s ease;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 7vw, 4rem);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: calc(var(--spacing-unit) * 2.5);
+            border-bottom: 2px solid var(--accent-1);
+            padding-bottom: 0.6rem;
+            display: inline-block;
+            text-align: center;
+            width: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        h3 {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            color: var(--accent-1);
+            font-weight: 500;
+        }
+
+        h4 {
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+            color: var(--accent-2);
+        }
+
+        p {
+            font-size: clamp(1rem, 2.5vw, 1.05rem);
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: var(--spacing-unit);
+            color: var(--text-secondary);
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            transition: color var(--transition-speed) ease;
+        }
+
+        p.lead {
+            font-size: clamp(1.1rem, 3vw, 1.25rem);
+            color: var(--text-primary);
+            font-weight: 300;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 650px;
+            margin: calc(var(--spacing-unit) * -1) auto calc(var(--spacing-unit) * 2.5) auto;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        img,
+        video,
+        iframe {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            display: block;
+            box-shadow: 0 4px 15px var(--card-shadow);
+        }
+
+        a {
+            color: var(--accent-1);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--heading-color);
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .button-style {
+            background-color: var(--accent-1);
+            color: var(--bg-color);
+            border: 1px solid transparent;
+            padding: calc(var(--spacing-unit)*0.8) calc(var(--spacing-unit)*2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, color var(--transition-speed) ease, border-color 0.3s ease;
+            font-family: var(--font-body);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: calc(var(--spacing-unit) * 1.5);
+            letter-spacing: 0.5px;
+        }
+
+        .button-style:hover {
+            background-color: var(--accent-2);
+            transform: translateY(-2px);
+            color: var(--bg-color);
+        }
+
+        .button-outline {
+            background-color: transparent;
+            color: var(--accent-1);
+            border: 1px solid var(--accent-1);
+        }
+
+        .button-outline:hover {
+            background-color: var(--accent-1);
+            color: var(--bg-color);
+        }
+
+        .control-button {
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            padding: 8px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 8px var(--card-shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .control-button:hover {
+            background-color: var(--accent-2);
+            color: var(--bg-color);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        .control-button .icon {
+            margin-right: 4px;
+        }
+
+        #theme-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--card-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 1002;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 8px var(--card-shadow);
+            transition: all var(--transition-speed) ease;
+        }
+
+        #theme-toggle-btn:hover {
+            transform: scale(1.1);
+            color: var(--accent-1);
+            border-color: var(--accent-1);
+        }
+
+        #audio-control-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--card-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 8px var(--card-shadow);
+            transition: all var(--transition-speed) ease;
+        }
+
+        #audio-control-btn:hover {
+            transform: scale(1.1);
+            color: var(--accent-1);
+            border-color: var(--accent-1);
+        }
+
+        .top-toggle-controls {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1001;
+            display: flex;
+            gap: 8px;
+        }
+
+        #welcome {
+            min-height: 100vh;
+            padding-top: calc(var(--spacing-unit) * 8);
+        }
+
+        #welcome h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 500;
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+            color: var(--heading-color);
+        }
+
+        #welcome .ampersand {
+            font-family: var(--font-script);
+            font-size: 0.9em;
+            color: var(--accent-1);
+            margin: 0 2px;
+            font-weight: 500;
+        }
+
+        #welcome .subtitle {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--spacing-unit) * 2.5);
+            letter-spacing: 1px;
+        }
+
+        #welcome .main-hero-image {
+            max-width: 550px;
+            margin: calc(var(--spacing-unit) * 2.5) auto;
+            border-radius: var(--border-radius);
+        }
+
+        #welcome .dates {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-top: var(--spacing-unit);
+            font-weight: 400;
+        }
+
+        #welcome .down-arrow {
+            font-size: 1.8rem;
+            color: var(--accent-2);
+            margin-top: calc(var(--spacing-unit) * 4);
+            display: inline-block;
+            opacity: 0.7;
+            animation: floatDown 1.8s infinite ease-in-out;
+            transition: color var(--transition-speed) ease;
+        }
+
+        #welcome .down-arrow:hover {
+            color: var(--accent-1);
+        }
+
+        @keyframes floatDown {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        .story-container {
+            max-width: 720px;
+            width: 100%;
+            margin-top: var(--spacing-unit);
+        }
+
+        .story-entry {
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            padding-bottom: calc(var(--spacing-unit) * 3);
+            border-bottom: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, border-color var(--transition-speed) ease;
+        }
+
+        .story-entry:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .story-entry.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .story-entry .date {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--accent-2);
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .story-entry h3 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-unit);
+            font-family: var(--font-heading);
+            font-weight: 500;
+        }
+
+        .story-entry p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 100%;
+            animation: none;
+        }
+
+        .story-entry img {
+            max-width: 100%;
+            margin: calc(var(--spacing-unit) * 2) auto 0;
+            border-radius: 4px;
+        }
+
+        /* Base styles for the gallery grid */
+        #gallery-simple-grid .moments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Individual moment card */
+        #gallery-simple-grid .moment-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed) ease;
+            box-shadow: 0 3px 10px var(--card-shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Show card when visible */
+        #gallery-simple-grid .moment-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: calc(0.1s * var(--card-index));
+        }
+
+        /* Hover effect */
+        #gallery-simple-grid .moment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px var(--card-shadow);
+        }
+
+        /* Responsive image */
+        #gallery-simple-grid .moment-card img {
+            width: 100%;
+            height: auto;
+            max-height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Caption text */
+        #gallery-simple-grid .moment-card .caption {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            padding: 1rem;
+            word-wrap: break-word;
+        }
+
+        /* Tablet responsiveness (≤ 768px) */
+        @media (max-width: 768px) {
+            #gallery-simple-grid .moments-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 1rem;
+            }
+
+            #gallery-simple-grid .moment-card img {
+                max-height: 240px;
+            }
+
+            #gallery-simple-grid .moment-card .caption {
+                font-size: 0.9rem;
+                padding: 0.75rem;
+            }
+        }
+
+        /* Mobile responsiveness (≤ 480px) */
+        @media (max-width: 480px) {
+            #gallery-simple-grid .moments-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            #gallery-simple-grid .moment-card img {
+                max-height: 200px;
+            }
+
+            #gallery-simple-grid .moment-card .caption {
+                font-size: 0.85rem;
+                padding: 0.5rem;
+            }
+        }
+
+
+        #love-letter-modal-section #letter-icon {
+            font-size: clamp(3rem, 7vw, 4rem);
+            color: var(--accent-1);
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.4s ease;
+            margin: var(--spacing-unit) 0;
+            padding: var(--spacing-unit);
+        }
+
+        #love-letter-modal-section #letter-icon:hover {
+            transform: scale(1.1);
+        }
+
+        #love-letter-modal-content {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            /* High z-index for modal */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.5s ease;
+        }
+
+        html[data-theme='light'] #love-letter-modal-content {
+            background-color: rgba(240, 240, 240, 0.85);
+        }
+
+        #love-letter-modal-section .letter-body {
+            background-color: var(--card-bg);
+            margin: 10% auto;
+            padding: clamp(30px, 6vw, 60px);
+            border: 1px solid var(--border-color);
+            width: 85%;
+            max-width: 700px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            text-align: left;
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+        }
+
+        #love-letter-modal-section .close-button {
+            color: var(--text-secondary);
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            line-height: 1;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        #love-letter-modal-section .close-button:hover {
+            color: var(--accent-1);
+        }
+
+        #love-letter-modal-section .letter-text {
+            font-family: var(--font-heading);
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            line-height: 1.8;
+            color: var(--text-primary);
+            font-weight: 400;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        #love-letter-modal-section .letter-text p {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+            margin-bottom: 1.5em;
+            animation: none;
+            opacity: 1;
+            transform: none;
+            max-width: 100%;
+        }
+
+        #love-letter-modal-section .letter-signature {
+            font-family: var(--font-script);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            text-align: right;
+            margin-top: calc(var(--spacing-unit) * 3);
+            color: var(--text-primary);
+        }
+
+        #love-letter-modal-section .letter-signature span {
+            color: var(--accent-1);
+        }
+
+        #promises .promises-list {
+            list-style: none;
+            padding: 0;
+            max-width: 650px;
+            width: 100%;
+            margin: calc(var(--spacing-unit) * 3) auto 0;
+            text-align: left;
+        }
+
+        #promises .promises-list li {
+            padding: calc(var(--spacing-unit) * 1.2) 0;
+            margin-bottom: var(--spacing-unit);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1.05rem;
+            position: relative;
+            color: var(--text-primary);
+            line-height: 1.7;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, border-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        #promises .promises-list li:last-child {
+            border-bottom: none;
+        }
+
+        #promises .promises-list li.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: calc(0.1s * var(--promise-index));
+        }
+
+        #promises .promises-list li::before {
+            content: '•';
+            position: absolute;
+            left: -20px;
+            top: calc(var(--spacing-unit) * 1.2);
+            color: var(--accent-1);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            #promises .promises-list {
+                padding-left: 25px;
+            }
+
+            #promises .promises-list li::before {
+                left: 0;
+            }
+        }
+
+        #anniversary-countdown {
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            min-height: auto;
+            padding: calc(var(--spacing-unit) * 5) 5%;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        #anniversary-countdown h2 {
+            color: var(--heading-color);
+        }
+
+        #anniversary-countdown p {
+            color: var(--text-secondary);
+        }
+
+        #anniversary-countdown .timer {
+            display: flex;
+            justify-content: center;
+            gap: clamp(15px, 4vw, 30px);
+            margin-top: calc(var(--spacing-unit) * 2.5);
+            flex-wrap: wrap;
+        }
+
+        #anniversary-countdown .timer div {
+            background: transparent;
+            padding: var(--spacing-unit);
+            min-width: 90px;
+            text-align: center;
+        }
+
+        #anniversary-countdown .timer span {
+            display: block;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 500;
+            line-height: 1.1;
+            font-family: var(--font-body);
+            color: var(--accent-1);
+        }
+
+        #anniversary-countdown .timer p {
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+            margin-bottom: 0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-top: calc(var(--spacing-unit) * 0.5);
+            animation: none;
+        }
+
+        #thank-you {
+            min-height: 50vh;
+        }
+
+        #thank-you .final-words {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            max-width: 650px;
+            color: var(--text-secondary);
+            margin-top: var(--spacing-unit);
+            font-weight: 300;
+        }
+
+        #thank-you .final-signature {
+            font-family: var(--font-script);
+            font-size: clamp(2.2rem, 6vw, 3.2rem);
+            margin-top: calc(var(--spacing-unit) * 2.5);
+            color: var(--accent-1);
+        }
+
+        nav.main-nav {
+            background-color: var(--bg-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            /* Below intro, above modals */
+            box-shadow: 0 2px 10px var(--card-shadow);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+        }
+
+        nav.main-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px clamp(15px, 2.5vw, 25px);
+        }
+
+        nav.main-nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav.main-nav a:hover {
+            color: var(--accent-1);
+            background-color: color-mix(in srgb, var(--accent-1) 15%, transparent);
+        }
+
+        nav.main-nav a.active {
+            color: var(--accent-1);
+            font-weight: 700;
+        }
+
+        #hero-countdown {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 400;
+            color: var(--heading-color);
+            background-color: transparent;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            display: inline-block;
+            margin-top: var(--spacing-unit);
+            border: 1px solid var(--border-color);
+            font-family: var(--font-body);
+        }
+
+        #hero-countdown span {
+            margin: 0 8px;
+            font-weight: 700;
+            color: var(--accent-1);
+        }
+
+        .rotating-heart-container {
+            position: absolute;
+            top: 68%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 80px;
+            height: 80px;
+            perspective: 800px;
+            z-index: 0;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .rotating-heart {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: spinHeart 12s infinite linear;
+        }
+
+        .heart-face {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-1);
+            background-color: color-mix(in srgb, var(--card-bg) 20%, transparent);
+            border: 1px solid var(--accent-1);
+            backface-visibility: hidden;
+        }
+
+        .heart-face-front {
+            transform: translateZ(40px);
+        }
+
+        .heart-face-back {
+            transform: rotateY(180deg) translateZ(40px);
+        }
+
+        .heart-face-front::before {
+            content: 'A&S';
+            position: absolute;
+            font-size: 1.6rem;
+            color: var(--accent-1);
+            font-family: var(--font-script);
+        }
+
+        @keyframes spinHeart {
+            from {
+                transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        #scrapbook .scrapbook-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: calc(var(--spacing-unit) * 2);
+            perspective: 1000px;
+        }
+
+        #scrapbook .scrapbook-item {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px var(--card-shadow);
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+            transition: transform 0.4s var(--transition-card), box-shadow 0.4s var(--transition-card);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        #scrapbook .scrapbook-item:hover {
+            transform: translateZ(40px) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg)) scale(1.04);
+            box-shadow: 0 12px 30px var(--card-shadow);
+            z-index: 10;
+        }
+
+        #scrapbook .scrapbook-item .card-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        #scrapbook .scrapbook-item img.preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 0;
+            transition: transform 0.5s var(--transition-card);
+            transform: scale(1.0);
+            backface-visibility: hidden;
+            box-shadow: none;
+        }
+
+        #scrapbook .scrapbook-item:hover img.preview-img {
+            transform: scale(1.1);
+        }
+
+        #scrapbook .scrapbook-item .content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            transform: translateZ(10px);
+        }
+
+        #scrapbook .scrapbook-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--heading-color);
+            font-weight: 700;
+            font-family: var(--font-heading);
+        }
+
+        #scrapbook .scrapbook-item .date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        #scrapbook .scrapbook-item p.click-prompt {
+            font-size: 0.95rem;
+            flex-grow: 1;
+            margin-bottom: 0;
+            color: var(--accent-2);
+            font-style: italic;
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+            text-align: right;
+            animation: none;
+        }
+
+        #scrapbook .scrapbook-item p.click-prompt::after {
+            content: ' →';
+        }
+
+        #memory-jar-section {
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 2);
+        }
+
+        #memory-jar-section .memory-jar-container {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        #memory-jar-section .memory-jar-icon {
+            font-size: 5rem;
+            color: var(--accent-2);
+            transition: transform 0.3s ease, color var(--transition-speed) ease;
+        }
+
+        #memory-jar-section .memory-jar-container:hover .memory-jar-icon {
+            transform: scale(1.1) rotate(-5deg);
+            color: var(--accent-1);
+        }
+
+        #memory-jar-section .memory-jar-container::after {
+            content: 'Click Me!';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: var(--accent-1);
+            background: var(--card-bg);
+            padding: 3px 6px;
+            border-radius: 3px;
+            opacity: 0.9;
+            box-shadow: 0 1px 3px var(--card-shadow);
+        }
+
+        #voice-messages {
+            padding: calc(var(--spacing-unit) * 2);
+        }
+
+        #voice-messages .voice-message-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 1rem auto;
+        }
+
+        #voice-messages .voice-message-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            box-shadow: 0 2px 5px var(--card-shadow);
+        }
+
+        #voice-messages .voice-message-item p {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--heading-color);
+            font-size: 1rem;
+            animation: none;
+        }
+
+        #voice-messages .voice-message-item audio {
+            width: 100%;
+            filter: saturate(0.8);
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: var(--accent-1);
+            border-radius: 5px;
+        }
+
+        audio::-webkit-media-controls-play-button {
+            color: var(--bg-color);
+        }
+
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display,
+        audio::-webkit-media-controls-timeline {
+            color: var(--bg-color);
+        }
+
+        html[data-theme='dark'] audio::-webkit-media-controls-panel {
+            background-color: var(--accent-1-dark);
+        }
+
+        #surprise-reveal {
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 2);
+        }
+
+        #surprise-reveal .reveal-container {
+            display: inline-block;
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--card-shadow);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            width: 300px;
+            max-width: 90%;
+        }
+
+        #surprise-reveal .reveal-hidden-content {
+            padding: 40px 20px;
+            background-color: var(--card-bg);
+        }
+
+        #surprise-reveal .reveal-hidden-content img {
+            max-width: 150px;
+            margin: 0 auto 15px auto;
+        }
+
+        #surprise-reveal .reveal-hidden-content h4 {
+            color: var(--heading-color);
+        }
+
+        #surprise-reveal .reveal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent-2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--bg-color);
+            font-weight: bold;
+            transition: opacity 0.5s ease;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.2rem;
+        }
+
+        #surprise-reveal .reveal-container.revealed .reveal-overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #polaroids {
+            overflow-x: hidden;
+            padding-bottom: 40px;
+        }
+
+        #polaroids .polaroid-container {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        #polaroids .polaroid {
+            background-color: #fff;
+            color: #333;
+            padding: 10px 10px 20px 10px;
+            border: 1px solid #ddd;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.15);
+            border-radius: 3px;
+            transform: rotate(var(--rotate, 0deg));
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            width: 180px;
+            animation: swing 8s infinite ease-in-out alternate var(--delay);
+        }
+
+        #polaroids .polaroid:hover {
+            transform: scale(1.15) rotate(0deg) !important;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+            z-index: 5;
+        }
+
+        #polaroids .polaroid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 10px;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        #polaroids .polaroid p {
+            font-family: var(--font-script);
+            text-align: center;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: #555;
+            animation: none;
+        }
+
+        @keyframes swing {
+            from {
+                transform: rotate(var(--rotate-start, -3deg));
+            }
+
+            to {
+                transform: rotate(var(--rotate-end, 3deg));
+            }
+        }
+
+        #polaroids .polaroid-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 5%;
+            right: 5%;
+            height: 3px;
+            background: repeating-linear-gradient(45deg, #ccc, #ccc 5px, #eee 5px, #eee 10px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        #letter-carousel .letter-carousel-container {
+            max-width: 600px;
+            margin: 1rem auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 4px 12px var(--card-shadow);
+            position: relative;
+            min-height: 300px;
+            overflow: hidden;
+        }
+
+        #letter-carousel .love-letter-slide {
+            display: none;
+            animation: fadeInLetter 0.8s ease;
+            text-align: left;
+        }
+
+        #letter-carousel .love-letter-slide.active {
+            display: block;
+        }
+
+        #letter-carousel .love-letter-slide h4 {
+            font-family: var(--font-script);
+            font-size: 1.8rem;
+            color: var(--heading-color);
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: none;
+            padding-bottom: 0;
+            display: block;
+        }
+
+        #letter-carousel .love-letter-slide p {
+            font-family: var(--font-script);
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--text-primary);
+            animation: none;
+            max-width: 100%;
+        }
+
+        #letter-carousel .letter-nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #letter-carousel .letter-nav button {
+            background: var(--accent-1);
+            color: var(--bg-color);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 1.2rem;
+            margin: 0 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #letter-carousel .letter-nav button:hover {
+            background-color: var(--accent-2);
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeInLetter {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        #why-love-cards .flip-card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 2rem;
+            perspective: 1000px;
+        }
+
+        #why-love-cards .flip-card {
+            background-color: transparent;
+            width: 200px;
+            height: 250px;
+            border: none;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        #why-love-cards .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s;
+            transform-style: preserve-3d;
+        }
+
+        #why-love-cards .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        #why-love-cards .flip-card-front,
+        #why-love-cards .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px var(--card-shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            flex-direction: column;
+        }
+
+        #why-love-cards .flip-card-front {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: var(--bg-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        #why-love-cards .flip-card-front span {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        #why-love-cards .flip-card-back {
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            transform: rotateY(180deg);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        #reminders ul {
+            list-style: none;
+            padding-left: 0;
+            max-width: 450px;
+            margin: 1rem auto;
+        }
+
+        #reminders li {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 12px 18px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        #reminders li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px var(--card-shadow);
+        }
+
+        #reminders li .date {
+            font-weight: bold;
+            color: var(--accent-1);
+            margin-left: 10px;
+            font-size: 0.9em;
+        }
+
+        #reminders li .name {
+            color: var(--text-primary);
+        }
+
+        #confession-wall {
+            padding: calc(var(--spacing-unit) * 2);
+        }
+
+        #confession-wall textarea {
+            width: 100%;
+            max-width: 500px;
+            height: 100px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #confession-wall textarea:focus {
+            border-color: var(--accent-1);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-1) 30%, transparent);
+            outline: none;
+        }
+
+        #confession-wall button.submit-confession {
+            background: var(--accent-1);
+            color: var(--bg-color);
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+        }
+
+        #confession-wall button.submit-confession:hover {
+            background: var(--accent-2);
+            transform: scale(1.03);
+        }
+
+        #confession-wall #confession-output {
+            margin-top: 20px;
+            background: color-mix(in srgb, var(--card-bg) 80%, transparent);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            border: 1px dashed var(--border-color);
+            min-height: 80px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        #confession-wall #confession-output div {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        #confession-wall #confession-output div:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        #confession-wall #confession-output .confession-text {
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        #confession-wall #confession-output .confession-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: block;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        #virtual-hug {
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 2);
+        }
+
+        #virtual-hug button#hug-button {
+            background: var(--accent-1);
+            color: var(--bg-color);
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        #virtual-hug button#hug-button:hover {
+            background: var(--accent-2);
+            transform: scale(1.05);
+        }
+
+        .modal,
+        .feature-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            /* High z-index */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(10, 10, 10, 0.75);
+            backdrop-filter: blur(6px);
+            animation: fadeInModalBg 0.5s ease forwards;
+        }
+
+        html[data-theme='light'] .modal,
+        html[data-theme='light'] .feature-modal {
+            background-color: rgba(240, 240, 240, 0.75);
+        }
+
+        @keyframes fadeInModalBg {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content,
+        .feature-modal-content {
+            background-color: var(--card-bg);
+            margin: 12% auto;
+            padding: clamp(25px, 5vw, 40px);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+            animation: slideInModalContent 0.5s var(--transition-smooth) forwards;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .feature-modal-content {
+            max-width: 500px;
+            text-align: center;
+        }
+
+        @keyframes slideInModalContent {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close,
+        .feature-modal-close {
+            color: var(--text-secondary);
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 2rem;
+            font-weight: 300;
+            line-height: 1;
+            transition: color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .modal-close:hover,
+        .feature-modal-close:hover {
+            color: var(--accent-1);
+            transform: rotate(90deg);
+        }
+
+        #modal-dynamic-content h3,
+        #feature-modal-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 15px;
+            color: var(--heading-color);
+            text-align: center;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        #modal-dynamic-content #modal-date {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--accent-2);
+            margin-bottom: 10px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        #modal-dynamic-content #modal-description {
+            font-size: 1rem;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 0;
+            max-width: 100%;
+            animation: none;
+        }
+
+        #modal-dynamic-content #modal-image {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            margin: 0 auto 15px auto;
+            border-radius: var(--border-radius);
+        }
+
+        #modal-dynamic-content #modal-video-container iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+            border-radius: var(--border-radius);
+        }
+
+        #feature-modal-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            animation: none;
+            max-width: 100%;
+        }
+
+        #feature-modal-image {
+            max-width: 80%;
+            max-height: 200px;
+            margin: 0 auto 15px auto;
+            border-radius: 4px;
+        }
+
+        #feature-modal-extra .hug-animation {
+            font-size: 4rem;
+            margin: 10px 0 20px 0;
+            display: inline-block;
+            animation: gentleHug 1.5s ease-in-out;
+            color: var(--accent-1);
+        }
+
+        @keyframes gentleHug {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .rose-petal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            /* Below intro, above content */
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        body.raining-roses .rose-petal-container {
+            opacity: 0.6;
+        }
+
+        .rose-petal {
+            position: absolute;
+            width: 15px;
+            height: 20px;
+            background-color: var(--rose-color);
+            border-radius: 0% 50% 50% 50% / 0% 30% 70% 70%;
+            opacity: 0.8;
+            animation: fallSway 8s linear infinite;
+            top: -30px;
+        }
+
+        @keyframes fallSway {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.8;
+            }
+
+            25% {
+                transform: translateX(20px) rotate(60deg);
+            }
+
+            50% {
+                transform: translateY(50vh) translateX(-30px) rotate(120deg);
+                opacity: 1;
+            }
+
+            75% {
+                transform: translateX(40px) rotate(180deg);
+            }
+
+            100% {
+                transform: translateY(110vh) translateX(10px) rotate(270deg);
+                opacity: 0;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 1.5);
+            background-color: var(--bg-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 300;
+            border-top: 1px solid var(--border-color);
+            transition: all var(--transition-speed) ease;
+        }
+
+        footer p {
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+            font-size: 0.9rem;
+            animation: none;
+            max-width: 100%;
+        }
+
+        footer a {
+            color: var(--accent-1);
+        }
+
+        footer a:hover {
+            color: var(--heading-color);
+        }
+
+        @media (max-width: 576px) {
+            .top-toggle-controls {
+                top: auto;
+                bottom: 10px;
+                right: 10px;
+                left: auto;
+                background-color: color-mix(in srgb, var(--card-bg) 80%, transparent);
+                padding: 5px;
+                border-radius: var(--border-radius);
+            }
+
+            #theme-toggle-btn {
+                bottom: 70px;
+            }
+
+            #audio-control-btn {
+                bottom: 70px;
+            }
+        }
+
+        @media (hover: none) {
+            #scrapbook .scrapbook-item:hover {
+                transform: translateY(-5px) scale(1.02);
+                box-shadow: 0 8px 20px var(--card-shadow);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="intro-overlay">
+        <div id="intro-heart" title="Click to Enter Our Story">💖</div> <!-- Emoji heart, or use an SVG/image -->
+    </div>
+
+    <div id="main-content-wrapper"> <!-- All existing content goes here -->
+        <!-- Theme Toggle Button (from Code 1) -->
+        <button id="theme-toggle-btn" aria-label="Toggle Theme">☀️</button>
+
+        <!-- Audio Control Button (from Code 1) -->
+        <audio id="bgMusic" loop>
+            <source src="images/bairiya.mp3" type="audio/mpeg"> <!-- ☆☆☆ REPLACE THIS SRC ☆☆☆ -->
+            Your browser does not support the audio element.
+        </audio>
+        <button id="audio-control-btn" aria-label="Play/Pause Music">▶</button>
+
+        <!-- Top Toggles (Font, Rose - from Code 2) -->
+        <div class="top-toggle-controls">
+            <button id="font-toggle" class="control-button" title="Toggle Font Style"><span class="icon">✍️</span> <span
+                    class="text">Script</span></button>
+            <button id="rose-toggle" class="control-button" title="Toggle Rose Petals"><span class="icon">🌹</span>
+                <span class="text">Roses</span></button>
+        </div>
+
+        <!-- Rose Petal Container (from Code 2) -->
+        <div class="rose-petal-container" id="rose-container"></div>
+
+
+        <!-- Welcome Section (Hero - From Code 1, replaces Code 2's hero) -->
+        <section id="welcome">
+            <div class="rotating-heart-container">
+                <div class="rotating-heart">
+                    <div class="heart-face heart-face-front"></div>
+                    <div class="heart-face heart-face-back"></div>
+                </div>
+            </div>
+            <h1>Aditya <span class="ampersand">&</span> Siddhi</h1>
+            <p class="subtitle">YEAR ONE</p>
+            <p class="subtitle">Please turn on your speakers for the best experience and turn on the roses button also the dark mode and enjoy babayyy !!!</p>
+            <img src="images/main_anniversary_photo.jpg" alt="Aditya and Siddhi - Main Anniversary Photo"
+                class="main-hero-image"> <!-- ☆☆☆ REPLACE IMAGE ☆☆☆ -->
+            <div class="dates">
+                19 April 2024 – 25 May 2024 – 25 May 2025
+            </div>
+            <div id="hero-countdown">Loading countdown...</div>
+            <a href="#story" class="down-arrow" aria-label="Scroll down">↓</a>
+        </section>
+
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#welcome" class="active">Home</a></li>
+                    <li><a href="#story">Our Story</a></li>
+                    <li><a href="#gallery-simple-grid">Highlights</a></li>
+                    <li><a href="#scrapbook">Scrapbook</a></li>
+                    <li><a href="#polaroids">Moments</a></li>
+                    <li><a href="#love-letter-modal-section">Letter</a></li>
+                    <li><a href="#promises">Promises</a></li>
+                    <li><a href="#why-love-cards">Reasons</a></li>
+                    <li><a href="#more-features">Fun Stuff</a></li>
+                    <li><a href="#anniversary-countdown">Next Year</a></li>
+                    <li><a href="#thank-you">Thank You</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            <section id="story">
+                <div class="container">
+                    <h2>Our Journey</h2>
+                    <div class="story-container">
+                        <div class="story-entry"> <span class="date">April 19, 2024</span>
+                            <h3>The Beginning</h3>
+                            <p>It started unexpectedly. A connection formed, a conversation sparked. Looking back, it
+                                feels like the start of everything important, the first page of our beautiful chapter.
+                            </p>
+                        </div>
+                        <div class="story-entry"> <span class="date">May 25, 2024</span>
+                            <h3>Choosing Us</h3>
+                            <p>The moment 'maybe' turned into 'yes'. The day our individual paths joyfully merged onto
+                                this shared journey. A date etched in memory, a promise whispered in our hearts.</p>
+                        </div>
+                        <div class="story-entry"> <span class="date">First Bite</span>
+                            <h3>The pokkie bite</h3>
+                            <p>Do you remember this? 🥺 That was the first time you ever bit my hand… and honestly, it
+                                was the cutest little surprise. I still remember how your eyes sparkled right after,
+                                like you knew you left a tiny mark just to claim me. It wasn’t just a bite—it was the
+                                beginning of our forever kind of silliness, love, and memories. I never thought
+                                something so small could make me smile this much even now. 💖</p> <img
+                                src="images/bite.jpg" alt="Snapshot of Key Memory">
+                        </div>
+                        <div class="story-entry"> <span class="date">Every Single Day</span>
+                            <h3>Growing Together</h3>
+                            <p>Beyond the milestones, it's the everyday rhythm – the shared laughter that echoes, the
+                                quiet support that anchors, learning and adapting side-by-side. That's the true
+                                substance of our incredible story.</p>
+                        </div>
+                        <div class="story-entry"> <span class="date">May 25, 2025</span>
+                            <h3>One Year Down, Forever To Go</h3>
+                            <p>365 days. It feels so significant. Celebrating not just the time passed, but the love
+                                built, the understanding deepened, and the beautiful future we're so excited to create
+                                together. Happy Anniversary, my love.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gallery-simple-grid">
+                <div class="container">
+                    <h2>Year One Highlights</h2>
+                    <p class="section-intro">A few captured glimpses from our amazing first year together.</p>
+                    <div class="moments-grid">
+                        <div class="moment-card" style="--card-index: 1;"> <img src="images/moment1.JPG" alt="Moment 1">
+                            <p class="caption">The moment of First time we done Matching Outfit</p>
+                        </div>
+                        <div class="moment-card" style="--card-index: 2;"> <img src="images/moment2.JPG" alt="Moment 2">
+                            <p class="caption">The Moment when we were giggling our laughs</p>
+                        </div>
+                        <div class="moment-card" style="--card-index: 3;"> <img src="images/moment3.JPG" alt="Moment 3">
+                            <p class="caption">Your Birthday with me first time</p>
+                        </div>
+                        <div class="moment-card" style="--card-index: 4;"> <img src="images/moment4.JPG" alt="Moment 4">
+                            <p class="caption">The first time we filmed ourself and also took ss of the beautiful pic's
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="scrapbook">
+                <div class="container">
+                    <h2>Our Digital Scrapbook</h2>
+                    <p class="section-intro">
+                        A collection of cherished memories. Hover over the cards for a little magic, and click to see
+                        the full story.
+                    </p>
+                    <div class="scrapbook-grid">
+                        <article class="scrapbook-item" data-modal-type="image"
+                            data-src="images/Happy Anniversary Bubi.jpg" data-title="I Love You Babay"
+                            data-description="Here is all Scrapbook Babayyy--> <a href='https://heyzine.com/flip-book/a21dc49ea4.html' target='_blank'>click this bachu ❤️</a>">
+
+                            <div class="card-image-wrapper">
+                                <img class="preview-img" src="images/baby.jpg" alt=aditya and siddhi">
+                            </div>
+                            <div class="content">
+                                <h3>Scrapbook</h3>
+                                <span class="date">I LOVE YOU INFINITY BABAY</span>
+                                <p class="click-prompt">View Scrapbook</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="polaroids">
+                <div class="container">
+                    <h2>Moments on Film</h2>
+                    <p class="section-intro">A few snapshots hanging around, telling our tales...</p>
+                    <div class="polaroid-container">
+                        <div class="polaroid"
+                            style="--rotate: -4deg; --rotate-start: -6deg; --rotate-end: 2deg; --delay: 0.1s;"> <img
+                                src="images/poloroid_memory1.jpg" alt="Polaroid Memory 1">
+                            <p>Holi Day (Remember something?)</p>
+                        </div>
+                        <div class="polaroid"
+                            style="--rotate: 5deg; --rotate-start: 2deg; --rotate-end: 7deg; --delay: 0.5s;"> <img
+                                src="images/poloroid_memory2.jpg" alt="Polaroid Memory 2">
+                            <p>The Fantastic ghibli</p>
+                        </div>
+                        <div class="polaroid"
+                            style="--rotate: -2deg; --rotate-start: -4deg; --rotate-end: 1deg; --delay: 0.3s;"> <img
+                                src="images/poloroid_memory3.jpg" alt="Polaroid Memory 3">
+                            <p>Your smile melt's me babayyyy</p>
+                        </div>
+                        <div class="polaroid"
+                            style="--rotate: 3deg; --rotate-start: 1deg; --rotate-end: 5deg; --delay: 0.7s;"> <img
+                                src="images/poloroid_memory4.jpg" alt="Polaroid Memory 4">
+                            <p>Our Silly Selfie</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="love-letter-modal-section">
+                <div class="container">
+                    <h2>A Special Note For Siddhi</h2>
+                    <p class="section-intro">Just a few words from my heart to yours...</p>
+                    <div id="letter-icon" title="Click to open letter">✉️</div>
+                    <div id="love-letter-modal-content">
+                        <div class="letter-body">
+                            <span class="close-button" title="Close letter">×</span>
+                            <div class="letter-text">
+                                <p>My Dearest Siddhi,</p>
+                                <p>"Aamchi Premachi Gatha – 25/5/25"</p>
+                                <p>
+                                    25 May 2025 – ha divas fakta calendar varchya tarikhe sarkha nahiye, ha divas majhya
+                                    jagatlya saglyat mothya daulaticha, majhya premacha, aani majhya Bubi sobtichya
+                                    athvanincha divas ahe. Aajchya divshi don varsha purna hotayet jithe mi tula pahila
+                                    hota, ani jithe majha jagach badalun gela.Tujhya ekach nazret kahi tari veglach
+                                    vatla hota, jase ki kalpana pan nahi keli hoti ki tu mazya jivnat itka motha part
+                                    hoil.</p>
+                                <p>Bubi, tu fakt ek premika nahiyes, tu majhya jivnacha ek strong, soft, samjun ghenara,
+                                    ani kharach “peaceful place” ahes. Kadhi kadhi vatata ki tula mi kasa deserve kelay?
+                                    Tuzyasobat ek message karna pan divasacha best part asto, aani tujhya hasnyacha ek
+                                    story pan, majhya stress chi perfect remedy asto. Tuzi chanchaltya bolnyachi style,
+                                    tujhe thodke chidne, tujha “I miss you” mhanne, he sagla aathavla ki majha hrudayach
+                                    ghalun yet.</p>
+                                <p>Aapan jari socially ekmekanchya premacha ghoshna karu shakat nahi, tari prem kharach
+                                    khol ahe. Lokanpasun lapvun jivn jagane khup kadak asat, pan tu jithe tu ahes tithun
+                                    tu mala prem detes, support kartes, aani majhya saglya flaws accept kartes – hech
+                                    premach kharapan ahe. Tu majhya jagacha to hissa ahes je mala perfect banavtoy. Tula
+                                    aathavla ki mi kasach hoto tu aalyapurvi? Thoda lost, confused, normal. Pan tu
+                                    aalyavar mala ek direction, ek scope, aani ek meaning sapadla.</p>
+                                <p>Bubi, tula mi prem karto asa mhanne khup chhota vatata. Karan tu majhya manacha ek ek
+                                    kon bharun taklay. Tuze “cute angry” msgs, tuje “mazyasathi kay kelis” he prashna,
+                                    tuze “mala tu pahije” moments – sagla sanchit zalay majhya ya hrudayat. Aapan khup
+                                    chhoti chhoti goshti enjoy kelya – ekatra bolne, ekach gaane repeat karne,
+                                    ekmekanchya story la reply dene. Ani ha sagla majhya laaykipeksa adhik vatat hota.
+                                    Tu mazya astitvacha ek gela hissa zhalis, Bubi.</p>
+                                <p>Tuzya sobatche pratek moment special hotay – whether toh ek “good morning” text asel
+                                    ki ek “I miss you” night msg. Majhya jivnat kahi hi kam padla tari tu navhe. Tuza
+                                    support, tuza vishwas, tuze love – he sagla aaj majha strongest base ahe. Tu khup
+                                    simple ahes, pan tula samjun ghen khup complex ani khup interesting pan. Aapan jari
+                                    lokanchya drushtit “perfect couple” naslo, tari majhya drushtit tu perfect ahes,
+                                    aani aapan perfect ahot.</p>
+                                <p>
+                                    Mi tula kadhi hi dukh denyachi iccha nahi karat. Pan jari kabhi mi tula hurt kela
+                                    asel, tari sorry. Mi tula kadhi sodnar nahi. Tula gela tar mi punha tuzya sarkhi
+                                    konachya sobat prem nahi karu shakel. Tuzya sobat aapan je kalpana kelelya future
+                                    madhye – ekatra jagne, ekatra hasne, ekatra ekmakayacha support banne – te me jivn
+                                    bhar jagayla tayar ahe.</p>
+                                <p>Bubi, ya divshi mi tula ek vachan detoy – pudhchya anniversary pasun jithe jithe tu
+                                    jaashil, tithe tithe me asen. Aapan je kay kele, je kay anubhavla, tech nahi tar
+                                    tyachya peksha pan khup motha prem aapan pudhe experience karu. Happy Anniversary
+                                    Bubi. Tu majhya jagatil saglyat mothi beautiful goshta ahes. Mi tula prem karto…
+                                    kharach, kharach kharach kharach kharach prem karto.</p>
+                                <p>Happy First Anniversary, my love. Here's to us, and to many, many more.</p>
+                                <p>Scroll up babu and on upper-right corner you will find "X" just click it after
+                                    finishing the reading.</p>
+                            </div>
+                            <div class="letter-signature"> With all my love,<br> <span>Aditya</span> </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="promises">
+                <div class="container">
+                    <h2>Looking Forward Together</h2>
+                    <p class="lead section-intro">My intentions, for you and for us, as we step into another year.</p>
+                    <ul class="promises-list">
+                        <li style="--promise-index: 1;">To always cherish our connection and communicate openly, even
+                            when it's tough.</li>
+                        <li style="--promise-index: 2;">To be your biggest supporter, cheering you on as you chase your
+                            individual dreams and ambitions.</li>
+                        <li style="--promise-index: 3;">To always make time for us – for adventure, for quiet moments,
+                            for simply being together.</li>
+                        <li style="--promise-index: 4;">To be a reliable, loving partner you can always count on,
+                            through thick and thin.</li>
+                        <li style="--promise-index: 5;">To keep showing you, in big ways and small, just how much I
+                            value, appreciate, and adore you.</li>
+                        <li style="--promise-index: 6;">To approach our future with intention, joy, and a shared vision
+                            for the beautiful life we're building.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="why-love-cards">
+                <div class="container">
+                    <h2>Reasons I Adore You</h2>
+                    <p class="section-intro">Just a few of the countless things that make you so incredibly special to
+                        me. Click to reveal!</p>
+                    <div class="flip-card-grid">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span>💖</span>Reason #1</div>
+                                <div class="flip-card-back">Your incredible kindness and how you care for everyone
+                                    around you.</div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span>💖</span>Reason #2</div>
+                                <div class="flip-card-back">The way your eyes sparkle when you talk about dancing—it’s
+                                    captivating! It’s like the whole world pauses just to watch you light up. That
+                                    passion in you is truly something special.</div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span>💖</span>Reason #3</div>
+                                <div class="flip-card-back">How we can laugh uncontrollably together about the silliest
+                                    things. My favorite sound!</div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span>💖</span>Reason #4</div>
+                                <div class="flip-card-back">Your amazing strength and resilience when facing challenges.
+                                    You inspire me.</div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span>💖</span>Reason #5</div>
+                                <div class="flip-card-back">Your kindness and patience—they amaze me every single day.
+                                    You make everything feel calmer, warmer, and more beautiful just by being you.</div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span>💖</span>Reason #6</div>
+                                <div class="flip-card-back">Simply... you. Every little thing about you makes my world
+                                    better.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="more-features">
+                <div class="container">
+                    <h2>Fun Stuff & Little Surprises</h2>
+                    <p class="section-intro">A few more interactive bits and pieces, just for you!</p>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
+                        <div id="memory-jar-section">
+                            <h3>Memory Jar</h3>
+                            <p>Click the jar for a random sweet memory we've shared!</p>
+                            <div class="memory-jar-container" id="memory-jar-clickable"> <span
+                                    class="memory-jar-icon">🏺</span> </div>
+                        </div>
+                        <div id="surprise-reveal">
+                            <h3>Scratch & Reveal</h3>
+                            <p>Click the card to uncover a special message!</p>
+                            <div class="reveal-container" id="reveal-card">
+                                <div class="reveal-hidden-content">
+                                    <h4>You found me!</h4> <img src="images/beautiful.jpg" alt="Hidden Surprise">
+                                    <p>We had the "FIRST KISS" on MAY 21</p>
+                                </div>
+                                <div class="reveal-overlay">Click to Reveal! ✨</div>
+                            </div>
+                        </div>
+                        <div id="voice-messages">
+                            <h3>Voice Notes For You</h3>
+                            <p>A few messages, straight from the heart.</p>
+                            <p>Firstly turn of the Music from bottom-right corner Babayy!!</p>
+                            <div class="voice-message-list">
+                                <div class="voice-message-item">
+                                    <p>A little morning thought for you...</p> <audio controls
+                                        src="images/morning.mp3">No audio support.</audio>
+                                </div>
+                                <div class="voice-message-item">
+                                    <p>Thinking of Memory and smiling...</p> <audio controls
+                                        src="images/thinking.mp3">No audio support.</audio>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="virtual-hug">
+                            <h3>Need a Hug?</h3>
+                            <p>Sending one your way! Click below.</p> <button id="hug-button" class="button-style">Send
+                                Virtual Hug 🤗</button>
+                        </div>
+                        <div id="confession-wall">
+                            <h3>Sweet Little Confessions</h3>
+                            <p>Share a sweet or funny thought (it's just between us, saved locally!)</p> <textarea
+                                id="confession-input"
+                                placeholder="Write something sweet, funny, or just a random thought here..."></textarea>
+                            <button id="confession-submit" class="button-style submit-confession">Confess It!</button>
+                            <div id="confession-output">
+                                <p
+                                    style="font-size: 0.9rem; text-align: center; font-style: normal; color: var(--text-secondary)">
+                                    Your confessions will appear here...</p>
+                            </div>
+                        </div>
+                        <div id="reminders">
+                            <h3>Our Special Dates</h3>
+                            <p>A few important milestones to always remember!</p>
+                            <ul id="event-reminders-list"> </ul>
+                        </div>
+                    </div>
+                    <div id="letter-carousel" style="margin-top: calc(var(--spacing-unit) * 4);">
+                        <h3>More Notes For You</h3>
+                        <p class="section-intro">A carousel of thoughts and feelings.</p>
+                        <div class="letter-carousel-container">
+                            <div id="letter-slides-target"> </div>
+                            <div class="letter-nav"> <button id="prev-letter-btn" title="Previous Letter">
+                                    <</button> <button id="next-letter-btn" title="Next Letter">></button> </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="anniversary-countdown">
+                <div class="container">
+                    <h2>Next Chapter Countdown</h2>
+                    <p>To Anniversary Two! So many more adventures await.</p>
+                    <div class="timer" id="countdown-timer-element">
+                        <div><span id="days">00</span>
+                            <p>Days</p>
+                        </div>
+                        <div><span id="hours">00</span>
+                            <p>Hours</p>
+                        </div>
+                        <div><span id="minutes">00</span>
+                            <p>Minutes</p>
+                        </div>
+                        <div><span id="seconds">00</span>
+                            <p>Seconds</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: var(--spacing-unit); font-size: 0.9rem;">Until May 25, 2026</p>
+                </div>
+            </section>
+
+            <section id="thank-you">
+                <div class="container">
+                    <h2>With All My Love</h2>
+                    <p class="final-words">Siddhi, thank you for an absolutely incredible first year. For every laugh,
+                        every lesson, every quiet moment, and every grand adventure. For the beautiful memories made and
+                        for all the ones that are yet to come. I love you more than words can say.</p>
+                    <p class="final-signature">Aditya</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>Crafted with Love by Aditya for his Beautiful Siddhi</p>
+                <p><a href="https://github.com/your-repo-link-if-any" target="_blank" rel="noopener noreferrer">View
+                        Source on GitHub (Optional)</a></p>
+                <p>Aditya & Siddhi © <span id="copyright-year"></span></p>
+            </div>
+        </footer>
+
+        <div id="mainModal" class="modal">
+            <div class="modal-content"> <span class="modal-close" title="Close">×</span>
+                <div id="modal-dynamic-content"> <img id="modal-image" src="" alt="Modal Image" style="display: none;">
+                    <div id="modal-video-container" style="display: none;"></div>
+                    <h3 id="modal-title"></h3> <span id="modal-date" style="display: none;"></span>
+                    <p id="modal-description"></p>
+                </div>
+            </div>
+        </div>
+        <div id="featureModal" class="feature-modal">
+            <div class="feature-modal-content"> <span class="feature-modal-close" title="Close">×</span>
+                <h3 id="feature-modal-title"></h3> <img id="feature-modal-image" src="" alt="" style="display: none;">
+                <p id="feature-modal-text"></p>
+                <div id="feature-modal-extra"></div>
+            </div>
+        </div>
+    </div> <!-- End #main-content-wrapper -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const htmlElement = document.documentElement;
+            let isPlayingMusic = false; // Shared state for music playback
+
+            // --- Intro Overlay Logic ---
+            const introOverlay = document.getElementById('intro-overlay');
+            const introHeart = document.getElementById('intro-heart');
+            const mainContentWrapper = document.getElementById('main-content-wrapper');
+            const bgMusicGlobal = document.getElementById('bgMusic'); // Use a different var name to avoid conflict if needed
+            const audioControlBtnGlobal = document.getElementById('audio-control-btn');
+
+            if (introHeart && introOverlay && mainContentWrapper) {
+                introHeart.addEventListener('click', () => {
+                    introOverlay.classList.add('zoom-out');
+
+                    setTimeout(() => {
+                        mainContentWrapper.classList.add('visible');
+                        introOverlay.style.display = 'none';
+
+                        // Attempt to play music
+                        if (bgMusicGlobal && (bgMusicGlobal.paused || !isPlayingMusic)) {
+                            bgMusicGlobal.play().then(() => {
+                                if (audioControlBtnGlobal) audioControlBtnGlobal.textContent = '❚❚';
+                                isPlayingMusic = true;
+                            }).catch(error => {
+                                console.warn("Intro: Audio play failed.", error);
+                                if (audioControlBtnGlobal) audioControlBtnGlobal.textContent = '▶';
+                                isPlayingMusic = false;
+                            });
+                        }
+                    }, 800); // Match CSS transition duration for overlay opacity
+                });
+            } else {
+                // Fallback if intro elements are missing
+                if (mainContentWrapper) mainContentWrapper.classList.add('visible');
+                if (introOverlay) introOverlay.style.display = 'none';
+            }
+
+
+            // --- Theme Toggle ---
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            function applyTheme(theme) {
+                htmlElement.setAttribute('data-theme', theme);
+                if (themeToggleBtn) themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+                localStorage.setItem('theme', theme);
+            }
+            applyTheme(savedTheme);
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    const newTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                });
+            }
+
+            // --- Font Toggle ---
+            const fontToggleBtn = document.getElementById('font-toggle');
+            if (fontToggleBtn) {
+                const applyFont = (font) => {
+                    body.classList.remove('default-font', 'handwritten-mode');
+                    if (font === 'handwritten-mode') body.classList.add('handwritten-mode');
+                    else body.classList.add('default-font');
+                    localStorage.setItem('font', font);
+                    fontToggleBtn.querySelector('.text').textContent = font === 'handwritten-mode' ? 'Default' : 'Script';
+                };
+                const currentFont = localStorage.getItem('font') || 'default-font';
+                applyFont(currentFont);
+                fontToggleBtn.addEventListener('click', () => {
+                    const newFont = body.classList.contains('handwritten-mode') ? 'default-font' : 'handwritten-mode';
+                    applyFont(newFont);
+                });
+            }
+
+            // --- Audio Control (Main Button) ---
+            // bgMusicGlobal and audioControlBtnGlobal already defined for intro
+            if (bgMusicGlobal && audioControlBtnGlobal) {
+                audioControlBtnGlobal.addEventListener('click', () => {
+                    if (bgMusicGlobal.paused || !isPlayingMusic) {
+                        bgMusicGlobal.play().then(() => {
+                            audioControlBtnGlobal.textContent = '❚❚';
+                            isPlayingMusic = true;
+                        }).catch(error => {
+                            console.warn("Audio play failed via main button.", error);
+                            audioControlBtnGlobal.textContent = '▶';
+                            isPlayingMusic = false;
+                        });
+                    } else {
+                        bgMusicGlobal.pause();
+                        audioControlBtnGlobal.textContent = '▶';
+                        isPlayingMusic = false;
+                    }
+                });
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden && isPlayingMusic) {
+                        bgMusicGlobal.pause();
+                        audioControlBtnGlobal.textContent = '▶';
+                        isPlayingMusic = false;
+                    }
+                });
+            }
+
+            // --- Intersection Observers ---
+            const sections = document.querySelectorAll('section');
+            const sectionObserverOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const sectionObserverCallback = (entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); };
+            const sectionIntersectionObserver = new IntersectionObserver(sectionObserverCallback, sectionObserverOptions);
+            sections.forEach(section => sectionIntersectionObserver.observe(section));
+
+            const elementsToAnimate = document.querySelectorAll('.story-entry, .moment-card, .promises-list li');
+            const elementObserverOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
+            const elementObserverCallback = (entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }); };
+            const elementIntersectionObserver = new IntersectionObserver(elementObserverCallback, elementObserverOptions);
+            elementsToAnimate.forEach(el => elementIntersectionObserver.observe(el));
+
+            // --- Countdown Timer for Hero (Main Anniversary) ---
+            const heroCountdownElement = document.getElementById('hero-countdown');
+            const mainAnniversaryDate = new Date("May 25, 2025 00:00:00").getTime();
+            if (heroCountdownElement) {
+                const heroCountdownInterval = setInterval(() => {
+                    const now = new Date().getTime(); const distance = mainAnniversaryDate - now;
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24)); const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    if (distance < 0) { clearInterval(heroCountdownInterval); heroCountdownElement.innerHTML = "Happy Anniversary! ❤️"; heroCountdownElement.style.fontSize = '1.5rem'; }
+                    else { heroCountdownElement.innerHTML = `<span>${days}</span>d <span>${hours}</span>h <span>${minutes}</span>m <span>${seconds}</span>s to Year One!`; }
+                }, 1000);
+            }
+
+            // --- Countdown Timer for #anniversary-countdown section (Next Anniversary) ---
+            const daysEl = document.getElementById('days'); const hoursEl = document.getElementById('hours'); const minutesEl = document.getElementById('minutes'); const secondsEl = document.getElementById('seconds');
+            const nextAnniversaryCountdownContainer = document.getElementById('countdown-timer-element');
+            const nextAnniversaryDate = new Date("May 25, 2026 00:00:00").getTime();
+            if (nextAnniversaryCountdownContainer && daysEl && hoursEl && minutesEl && secondsEl) {
+                const updateNextAnniversaryCountdown = () => {
+                    const now = new Date().getTime(); const distance = nextAnniversaryDate - now;
+                    if (distance < 0) { nextAnniversaryCountdownContainer.innerHTML = "<p style='font-size: 1.2rem; color: var(--text-primary);'>Looking forward to many more years!</p>"; if (countdownInterval) clearInterval(countdownInterval); return; }
+                    daysEl.textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0'); hoursEl.textContent = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0'); minutesEl.textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0'); secondsEl.textContent = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+                }
+                let countdownInterval = setInterval(updateNextAnniversaryCountdown, 1000); updateNextAnniversaryCountdown();
+            }
+
+            // --- Modal Logic ---
+            const mainModal = document.getElementById('mainModal'); const featureModal = document.getElementById('featureModal'); const loveLetterModal = document.getElementById('love-letter-modal-content');
+            function setupModal(modalElement, customCloseSelector = '.modal-close, .feature-modal-close, .close-button') {
+                if (!modalElement) return () => { };
+                const modalCloseButton = modalElement.querySelector(customCloseSelector);
+                const closeModalFunc = () => { modalElement.style.display = 'none'; body.style.overflow = ''; const videoContainer = mainModal?.querySelector('#modal-video-container'); if (videoContainer) videoContainer.innerHTML = ''; const extraContent = featureModal?.querySelector('#feature-modal-extra'); if (extraContent) extraContent.innerHTML = ''; };
+                if (modalCloseButton) modalCloseButton.addEventListener('click', closeModalFunc);
+                modalElement.addEventListener('click', (event) => { if (event.target === modalElement) closeModalFunc(); });
+                return closeModalFunc;
+            }
+            const closeMainModal = setupModal(mainModal); const closeFeatureModal = setupModal(featureModal); const closeLoveLetterModal = setupModal(loveLetterModal, '.close-button');
+            window.addEventListener('keydown', (event) => { if (event.key === 'Escape') { if (mainModal && mainModal.style.display === 'block') closeMainModal(); if (featureModal && featureModal.style.display === 'block') closeFeatureModal(); if (loveLetterModal && loveLetterModal.style.display === 'block') closeLoveLetterModal(); } });
+
+            // Scrapbook Modal Opener
+            document.querySelectorAll('#scrapbook .scrapbook-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    if (!mainModal) return;
+                    const content = { type: item.getAttribute('data-modal-type') || 'image', src: item.getAttribute('data-src'), title: item.getAttribute('data-title'), date: item.getAttribute('data-date'), description: item.getAttribute('data-description') };
+                    const modalImage = mainModal.querySelector('#modal-image'); const modalVideoContainer = mainModal.querySelector('#modal-video-container'); const modalTitle = mainModal.querySelector('#modal-title'); const modalDateEl = mainModal.querySelector('#modal-date'); const modalDescription = mainModal.querySelector('#modal-description');
+                    modalImage.style.display = 'none'; modalVideoContainer.style.display = 'none'; modalDateEl.style.display = 'none';
+                    modalTitle.textContent = content.title || 'Details'; modalDescription.innerHTML = content.description || '';
+                    if (content.date) { modalDateEl.textContent = content.date; modalDateEl.style.display = 'block'; }
+                    if (content.type === 'video' && content.src && content.src !== '!!! REPLACE_WITH_YOUTUBE_EMBED_URL !!!') { modalVideoContainer.innerHTML = `<iframe width="560" height="315" src="${content.src.replace("watch?v=", "embed/")}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`; modalVideoContainer.style.display = 'block'; }
+                    else if (content.type === 'image' && content.src) { modalImage.src = content.src; modalImage.alt = content.title || 'Modal Image'; modalImage.style.display = 'block'; }
+                    mainModal.style.display = 'block'; body.style.overflow = 'hidden';
+                });
+            });
+
+            // Love Letter Modal Opener
+            const letterIcon = document.getElementById('letter-icon');
+            if (letterIcon && loveLetterModal) { letterIcon.addEventListener('click', () => { loveLetterModal.style.display = 'block'; body.style.overflow = 'hidden'; }); }
+
+            function openFeatureModal({ title = 'A little something', text = '', imageUrl = null, extraHtml = '' }) {
+                if (!featureModal) return;
+                featureModal.querySelector('#feature-modal-title').textContent = title; featureModal.querySelector('#feature-modal-text').innerHTML = text;
+                const imgElement = featureModal.querySelector('#feature-modal-image');
+                if (imageUrl) { imgElement.src = imageUrl; imgElement.alt = title; imgElement.style.display = 'block'; } else { imgElement.style.display = 'none'; }
+                featureModal.querySelector('#feature-modal-extra').innerHTML = extraHtml; featureModal.style.display = 'block'; body.style.overflow = 'hidden';
+            }
+
+            // 3D Card Tilt Effect
+            const scrapbookItems = document.querySelectorAll('#scrapbook .scrapbook-item');
+            const prefersReducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+            if (!prefersReducedMotionQuery.matches && !isTouchDevice) {
+                scrapbookItems.forEach(item => {
+                    item.addEventListener('mousemove', (e) => { const rect = item.getBoundingClientRect(); const x = e.clientX - rect.left - rect.width / 2; const y = e.clientY - rect.top - rect.height / 2; const rotateX = (y / rect.height) * -10; const rotateY = (x / rect.width) * 10; item.style.setProperty('--rotateX', `${rotateX}deg`); item.style.setProperty('--rotateY', `${rotateY}deg`); });
+                    item.addEventListener('mouseleave', () => { item.style.setProperty('--rotateX', '0deg'); item.style.setProperty('--rotateY', '0deg'); });
+                });
+            }
+
+            // Memory Jar
+            const memoryJarBtn = document.getElementById('memory-jar-clickable');
+            const memories = [{ text: "Remember the moment of us both at the hackathon night that memory and moment is unforgettable.", image: "images/memory_jar.jpg" }];
+            if (memoryJarBtn) { memoryJarBtn.addEventListener('click', () => { const randomMemory = memories[Math.floor(Math.random() * memories.length)]; openFeatureModal({ title: "A Sweet Memory...", text: randomMemory.text, imageUrl: randomMemory.image || null }); }); }
+
+            // Surprise Reveal
+            const revealCard = document.getElementById('reveal-card');
+            if (revealCard) { revealCard.addEventListener('click', () => { revealCard.classList.add('revealed'); }, { once: true }); }
+
+            // Love Letter Carousel
+            const letterSlidesTarget = document.getElementById('letter-slides-target'); const prevLetterBtn = document.getElementById('prev-letter-btn'); const nextLetterBtn = document.getElementById('next-letter-btn');
+            const loveLetters = [{ title: "To My Dearest Siddhi", content: "<p>Where do I even begin? Our journey together this past year has been the most incredible adventure of my life. Every day with you is a gift I treasure.</p><p>Happy Anniversary, my everything!</p>" }, { title: "Remember When...", content: "<p>Remember when we first met? That day, in that place, was the beginning of the most beautiful love story. I love you more than words can express.</p>" }, { title: "Looking Ahead, My Love", content: "<p>I can't wait to see what the future holds for us. Building our dreams together, hand in hand, is all I've ever wanted. Here's to many more years of love, laughter, and adventure.</p>" }];
+            let currentLetterIndex = 0;
+            function showLoveLetterSlide(index) {
+                if (!letterSlidesTarget || loveLetters.length === 0) return; letterSlidesTarget.innerHTML = '';
+                const letter = loveLetters[index]; const slideDiv = document.createElement('div'); slideDiv.classList.add('love-letter-slide', 'active'); slideDiv.innerHTML = `<h4>${letter.title}</h4>${letter.content}`; letterSlidesTarget.appendChild(slideDiv);
+            }
+            if (letterSlidesTarget && prevLetterBtn && nextLetterBtn && loveLetters.length > 0) {
+                prevLetterBtn.addEventListener('click', () => { currentLetterIndex = (currentLetterIndex - 1 + loveLetters.length) % loveLetters.length; showLoveLetterSlide(currentLetterIndex); });
+                nextLetterBtn.addEventListener('click', () => { currentLetterIndex = (currentLetterIndex + 1) % loveLetters.length; showLoveLetterSlide(currentLetterIndex); });
+                showLoveLetterSlide(currentLetterIndex);
+            }
+
+            // "Why I Love You" Cards
+            document.querySelectorAll('#why-love-cards .flip-card').forEach(card => { card.addEventListener('click', () => card.classList.toggle('flipped')); });
+
+            // Event Reminders
+            const eventList = document.getElementById('event-reminders-list');
+            const specialDates = [{ name: "Your Beautiful Birthday", date: "November 7" }, { name: "My Humble Birthday", date: "July 28" }, { name: "Our Anniversary", date: "May 25" }, { name: "The Day We First Met", date: "April 19 " }, { name: "The Hackathon Night", date: "March 20-21" }, { name: "The First Kiss", date: "May 21" }];
+            if (eventList) { specialDates.forEach(event => { const li = document.createElement('li'); li.innerHTML = `<span class="name">${event.name}</span> <span class="date">${event.date}</span>`; eventList.appendChild(li); }); }
+
+            // Confession Wall
+            const confessionInput = document.getElementById('confession-input'); const confessionSubmitBtn = document.getElementById('confession-submit'); const confessionOutput = document.getElementById('confession-output');
+            const confessionKey = 'adityaSiddhiAnniversaryConfessions';
+            function loadConfessions() {
+                if (!confessionOutput) return; const confessions = JSON.parse(localStorage.getItem(confessionKey) || '[]'); confessionOutput.innerHTML = '';
+                if (confessions.length === 0) { confessionOutput.innerHTML = '<p style="font-size: 0.9rem; text-align: center; font-style: normal; color: var(--text-secondary)">Your sweet confessions will appear here...</p>'; }
+                else { confessions.forEach(entry => { const div = document.createElement('div'); const textSpan = document.createElement('span'); textSpan.classList.add('confession-text'); textSpan.textContent = `"${entry.text}"`; const dateSpan = document.createElement('span'); dateSpan.classList.add('confession-date'); dateSpan.textContent = `- ${new Date(entry.timestamp).toLocaleDateString()}`; div.appendChild(textSpan); div.appendChild(dateSpan); confessionOutput.appendChild(div); }); }
+            }
+            if (confessionSubmitBtn && confessionInput) {
+                confessionSubmitBtn.addEventListener('click', () => {
+                    const text = confessionInput.value.trim();
+                    if (text) { const confessions = JSON.parse(localStorage.getItem(confessionKey) || '[]'); confessions.unshift({ text: text, timestamp: new Date().toISOString() }); localStorage.setItem(confessionKey, JSON.stringify(confessions)); confessionInput.value = ''; loadConfessions(); }
+                });
+            }
+            loadConfessions();
+
+            // Virtual Hug
+            const hugButton = document.getElementById('hug-button');
+            if (hugButton) { hugButton.addEventListener('click', () => { openFeatureModal({ title: "Sending a Big Virtual Hug!", text: "Consider yourself warmly hugged, my love! 🤗 Thinking of you always.", extraHtml: `<div class="hug-animation">🫂</div>` }); }); }
+
+            // Rain of Roses
+            const roseToggleBtn = document.getElementById('rose-toggle'); const roseContainer = document.getElementById('rose-container');
+            let isRainingRoses = false; let roseInterval = null;
+            function createRosePetal() {
+                if (!roseContainer || document.hidden || !isRainingRoses) return;
+                const petal = document.createElement('div'); petal.classList.add('rose-petal'); petal.style.left = Math.random() * 100 + 'vw'; petal.style.animationDuration = Math.random() * 5 + 6 + 's'; petal.style.animationDelay = Math.random() * 2 + 's'; petal.style.transform = `rotate(${Math.random() * 360}deg) scale(${Math.random() * 0.4 + 0.6})`; petal.style.setProperty('--rose-color', htmlElement.style.getPropertyValue('--rose-color')); roseContainer.appendChild(petal); setTimeout(() => petal.remove(), 13000);
+            }
+            if (roseToggleBtn && roseContainer) {
+                roseToggleBtn.addEventListener('click', () => {
+                    isRainingRoses = !isRainingRoses; body.classList.toggle('raining-roses', isRainingRoses); roseToggleBtn.querySelector('.text').textContent = isRainingRoses ? 'Stop Roses' : 'Roses'; roseToggleBtn.style.borderColor = isRainingRoses ? 'var(--rose-color)' : '';
+                    if (isRainingRoses) { createRosePetal(); roseInterval = setInterval(createRosePetal, 500); } else { clearInterval(roseInterval); }
+                });
+            }
+
+            // Footer Copyright Year
+            const copyrightYearEl = document.getElementById('copyright-year');
+            if (copyrightYearEl) copyrightYearEl.textContent = new Date().getFullYear();
+
+            // Smooth Scroll & Active Nav
+            const navElement = document.querySelector('nav.main-nav'); const navHeight = navElement ? navElement.offsetHeight : 60;
+            document.querySelectorAll('nav.main-nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault(); const targetId = this.getAttribute('href'); const targetElement = document.querySelector(targetId);
+                    if (targetElement) { const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 15; window.scrollTo({ top: targetPosition, behavior: 'smooth' }); }
+                });
+            });
+            const navLinks = document.querySelectorAll('nav.main-nav a');
+            const scrollSections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute('href'))).filter(section => section !== null);
+            window.addEventListener('scroll', () => {
+                let currentSectionId = ''; const scrollY = window.pageYOffset;
+                scrollSections.forEach(section => { const sectionTop = section.offsetTop - navHeight - 50; if (scrollY >= sectionTop) { currentSectionId = section.getAttribute('id'); } });
+                if (!currentSectionId && scrollY < (scrollSections[0]?.offsetTop - navHeight - 50)) { currentSectionId = "welcome"; }
+                navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === `#${currentSectionId}`) { link.classList.add('active'); } });
+            }, { passive: true });
+
+        }); // End DOMContentLoaded
+    </script>
+
+</body>
+
+</html>
